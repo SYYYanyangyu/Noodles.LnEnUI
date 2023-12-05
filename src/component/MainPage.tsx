@@ -4,8 +4,9 @@ import { Box, Container, CssBaseline, Paper, Typography } from '@mui/material';
 
 const MainPage: React.FC = () => {
   const squareStyles = {
-    width: '100%',
-    paddingTop: '100%', // 使 div 具有正方形的纵横比
+    width: 'calc(33.33% - 8px)', // 33.33% 宽度，并留出一些间距
+    marginBottom: '16px', // 底部间距
+    paddingTop: '33.33%', // 使 div 具有正方形的纵横比
     background: '#2196f3', // 用你喜欢的颜色替换
   };
 
@@ -13,48 +14,16 @@ const MainPage: React.FC = () => {
     <>
       <CssBaseline />
       <Container maxWidth="md">
-        <Box display="flex" flexWrap="wrap" justifyContent="space-between">
-          {/* 正方形 1 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 1
-            </Typography>
-          </Paper>
-
-          {/* 正方形 2 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 2
-            </Typography>
-          </Paper>
-
-          {/* 正方形 3 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 3
-            </Typography>
-          </Paper>
-
-          {/* 正方形 4 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 4
-            </Typography>
-          </Paper>
-
-          {/* 正方形 5 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 5
-            </Typography>
-          </Paper>
-
-          {/* 正方形 6 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 6
-            </Typography>
-          </Paper>
+        <Box display="flex" flexWrap="wrap">
+          {[1, 2, 3, 4, 5, 6].map((index) => (
+            <Box key={index} width="calc(33.33% - 8px)" marginBottom="16px" marginRight="16px">
+              <Paper elevation={3} sx={squareStyles}>
+                <Typography align="center" variant="h6" color="white">
+                  Square {index}
+                </Typography>
+              </Paper>
+            </Box>
+          ))}
         </Box>
       </Container>
     </>
