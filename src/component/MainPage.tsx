@@ -1,64 +1,29 @@
-// MainPage.tsx
+// HomePage.tsx
+
 import React from 'react';
-import { Box, Container, CssBaseline, Paper, Typography } from '@mui/material';
+import CustomCard from './CustomCard.tsx';
+import '../css/mainpage.css'; // 引入样式文件
 
-const MainPage: React.FC = () => {
-  const squareStyles = {
-    width: '100%',
-    paddingTop: '100%', // 使 div 具有正方形的纵横比
-    background: '#2196f3', // 用你喜欢的颜色替换
-  };
+// images
+import listenImage from '../assets/main/listen.png';
+import vocabulary from '../assets/main/vocobulary.png';
+import exam from '../assets/main/exammale.png';
+import communication from '../assets/main/communicationcarton.png';
 
+const HomePage: React.FC = () => {
+  
   return (
-    <>
-      <CssBaseline />
-      <Container maxWidth="md">
-        <Box display="flex" flexWrap="wrap" justifyContent="space-between">
-          {/* 正方形 1 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 1
-            </Typography>
-          </Paper>
-
-          {/* 正方形 2 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 2
-            </Typography>
-          </Paper>
-
-          {/* 正方形 3 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 3
-            </Typography>
-          </Paper>
-
-          {/* 正方形 4 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 4
-            </Typography>
-          </Paper>
-
-          {/* 正方形 5 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 5
-            </Typography>
-          </Paper>
-
-          {/* 正方形 6 */}
-          <Paper elevation={3} sx={squareStyles}>
-            <Typography align="center" variant="h6" color="white">
-              Square 6
-            </Typography>
-          </Paper>
-        </Box>
-      </Container>
-    </>
+      <div className="card-container">
+        <CustomCard photo={listenImage} title = "听力练习" description = "听力精炼"/>
+        <CustomCard photo={vocabulary} title = "单词练习" description = "单词精炼"/>
+        <CustomCard photo={exam} title = "考试练习" description = "考试精炼"/>
+        <CustomCard photo={communication} title = "一对一辅导" description = "一对一辅导"/>
+        <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_c86a70575200f95c6d186c27d4dc0d57.jpg" title = "一对一辅导" description = "一对一辅导"/>
+        <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_46ea26a448702a50bc469e1431a3cced.jpg" title = "一对一辅导" description = "一对一辅导"/>
+        <CustomCard photo="	https://d2g4kcs2g0r8f3.cloudfront.net/lrg_a0002f9cb7041b4ee1e12c8981f29a91.jpg" title = "小程序" description = "一对一辅导"/>
+      </div>
   );
 };
 
-export default MainPage;
+export default HomePage;
+
