@@ -30,12 +30,13 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = ['Home', 'About', 'Services', 'Contact'];
+  
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"  sx={{ marginBottom: '20px'}}>
       <Toolbar>
         {isMobile ? (
-          // 在手机端显示搜索框和菜单按钮
+          // 在手机端显示搜索框和菜单按钮lightseagreen
           <>
             <Input
               placeholder="language is information, and information is everything..."

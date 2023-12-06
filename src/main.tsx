@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
 
-import Navbar from './component/Navbar.tsx'; // 导入导航栏组件
+// 引入路由组件
+import { RouterProvider } from "react-router-dom";
+
+import router from './routes/index.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Navbar /> {/* 将导航栏组件放置在应用的顶部 */}
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

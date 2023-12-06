@@ -1,0 +1,26 @@
+/* mainpage.css */
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 在电脑端一排展示6个 */;
+  gap: 20px; /* 设置间距为 20px */
+  padding: 20px; /* 增加一个内边距 */
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* 在手机端一排展示1个 */
+    gap: 10px;
+    padding: 10px;
+    justify-content: center; /* 让卡片居中显示 */
+  }     
+
+  .card {
+    width: 90%; /* 在手机端将卡片宽度设置为 90% */
+  }
+  
+  .card-container {
+    margin-left: 5%; /* 在手机端减小左右边距 */
+    margin-right: 5%;
+  }
+}
