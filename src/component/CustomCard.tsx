@@ -6,10 +6,13 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardContent, Typography } from '@mui/material';
 
+import { Link } from 'react-router-dom';
+
 interface CardProps {
   photo: string;
   title: string;
-  description : string
+  description: string;
+  to:string;
 }
 
 const useStyles = makeStyles({
@@ -25,25 +28,27 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomCard: React.FC<CardProps> = ({ photo, title, description}) => {
+const CustomCard: React.FC<CardProps> = ({ photo, title, description,to }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={photo}
-        title={title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Some description about the photo.
-        </Typography>
-      </CardContent>
-    </Card>
+    <Link to={to} style={{ textDecoration: 'none' }}>
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={photo}
+          title={title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Some description about the photo.
+          </Typography>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
