@@ -16,8 +16,10 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20",
     "@mui/styles": "^5.14.20",
+    "axios": "^1.6.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
@@ -25,6 +27,7 @@
     "sort-by": "^1.2.0"
   },
   "devDependencies": {
+    "@types/node": "^20.8.2",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",

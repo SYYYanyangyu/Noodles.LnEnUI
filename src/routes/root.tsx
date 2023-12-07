@@ -2,7 +2,9 @@ import { useLocation } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 export default function ErrorPage() {
+
   const location = useLocation();
+  
   const error = location.state && location.state.error;
 
   console.error(error);

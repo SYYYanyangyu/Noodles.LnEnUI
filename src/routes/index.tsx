@@ -1,59 +1,35 @@
 // AppRouter.tsx
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  createHashRouter,
+  createRoutesFromElements,
+  Route
+} from "react-router-dom";
+
+
+// custom component
 import Layout from '../component/Layout';
 import MainPage from '../component/MainPage';
 import ErrorPage from '../component/Error';
 
-const AppRouter: React.FC = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <MainPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/listen"
-          element={
-            <Layout>
-              <ErrorPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/vocabulary"
-          element={
-            <Layout>
-              <ErrorPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/exam"
-          element={
-            <Layout>
-              <ErrorPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/tutoring"
-          element={
-            <Layout>
-              <ErrorPage />
-            </Layout>
-          }
-        />
-        <Route path="*" element={<Layout><ErrorPage /></Layout>} />
-      </Routes>
-    </Router>
-  );
-};
+import Category from '../views/category'
+
+
+const AppRouter = createHashRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Layout><MainPage /></Layout>}></Route>
+      <Route path="/listen" element={<Layout><Category /></Layout>}></Route>
+      <Route path="/vocabulary" element={<Layout><Category /></Layout>}></Route>
+      <Route path="/exam" element={<Layout><Category /></Layout>}></Route>
+      <Route path="/communication" element={<Layout><Category /></Layout>}></Route>
+      <Route path="/listen" element={<Layout><Category /></Layout>}></Route>
+    </>
+  )
+);
+
+
+
 
 export default AppRouter;
