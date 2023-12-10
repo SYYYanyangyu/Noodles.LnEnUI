@@ -1,5 +1,3 @@
-// Card.tsx
-
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import Card from '@mui/material/Card';
@@ -29,7 +27,6 @@ const useStyles = makeStyles({
 });
 
 const CustomCard: React.FC<CardProps> = ({ photo, title, description, to }) => {
-
 
   const classes = useStyles();
   return (

@@ -24,7 +24,7 @@ import type { CategoryResponse } from "../api/listenadmin/category/type";
 
 const Category: React.FC = () => {
 
-  const [categoryData, setCategoryData] = useState<mapModel[]>([]);
+  const [categoryData, setCategoryData] = useState<CategoryResponse[]>([]);
   
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Category: React.FC = () => {
             photo={category.coverUrl}
             title={category.title}
             description={category.description}
-            to="/listen"
+            to="/datalist"
           />
         </Grid>
       ))}

@@ -12,9 +12,8 @@ import {
 import Layout from '../component/Layout';
 import MainPage from '../component/MainPage';
 import ErrorPage from '../component/Error';
-
-import Category from '../views/category'
-
+import DataList from '../component/DataList';
+import Category from '../views/category';
 
 const AppRouter = createHashRouter(
   createRoutesFromElements(
@@ -25,6 +24,8 @@ const AppRouter = createHashRouter(
       <Route path="/exam" element={<Layout><Category /></Layout>}></Route>
       <Route path="/communication" element={<Layout><Category /></Layout>}></Route>
       <Route path="/listen" element={<Layout><Category /></Layout>}></Route>
+
+      <Route path="/datalist" element={<Layout><DataList /></Layout>}></Route>
     </>
   )
 );
