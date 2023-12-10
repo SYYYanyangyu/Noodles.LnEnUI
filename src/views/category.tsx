@@ -21,7 +21,7 @@ interface mappedData {
 
 const Category: React.FC = () => {
 
-  const [categoryData, setCategoryData] = useState<mapModel[]>([]);
+  const [categoryData, setCategoryData] = useState<mappedData[]>([]);
   
 
   useEffect(() => {
