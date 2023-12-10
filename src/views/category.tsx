@@ -21,8 +21,8 @@ interface mappedData {
 
 const Category: React.FC = () => {
 
-  const [categoryData, setCategoryData] = useState<mappedData[]>([]);
-
+  const [categoryData, setCategoryData] = useState<mapModel[]>([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,19 +44,19 @@ const Category: React.FC = () => {
 
   return (
     <Box sx={{ padding: '20px', marginTop: '30px', margin: 'auto' }}>
-      <Grid container spacing={3}>
-        {categoryData.map((category, index) => (
-          <Grid key={index} xs={6} md={2}>
-            <CustomCard
-              photo={category.coverUrl}
-              title={category.title}
-              description={category.description}
-              to="/listen"
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+    <Grid container spacing={3}>
+      {categoryData.map((category, index) => (
+        <Grid key={index} xs={6} md={2}>
+          <CustomCard
+            photo={category.coverUrl}
+            title={category.title}
+            description={category.description}
+            to="/listen"
+          />
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
   )
 }
 
