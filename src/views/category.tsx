@@ -51,7 +51,7 @@ const Category: React.FC = () => {
             photo={category.coverUrl}
             title={category.title}
             description={category.description}
-            to="/listen"
+            to="/datalist"
           />
         </Grid>
       ))}
