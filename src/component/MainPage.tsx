@@ -10,8 +10,6 @@ import { Box } from '@mui/material';
 import CustomCard from './CustomCard.tsx';
 
 // images
-import listenImage from '../assets/main/listen.png';
-import vocabulary from '../assets/main/vocobulary.png';
 import exam from '../assets/main/exammale.png';
 import communication from '../assets/main/communicationcarton.png';
 
@@ -22,11 +20,11 @@ const HomePage: React.FC = () => {
       <Grid container spacing={6}>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo={listenImage} title="听力练习" description="听力精炼" to="/listen" />
+          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/listen.png" title="听力练习" description="听力精炼" to="/listen" />
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo={vocabulary} title="单词练习" description="单词精炼" to="/vocabulary" />
+          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/vocobulary.png" title="单词练习" description="单词精炼" to="/vocabulary" />
         </Grid>
 
         <Grid xs={6} md={2}>
