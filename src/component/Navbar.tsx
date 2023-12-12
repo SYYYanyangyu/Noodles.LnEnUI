@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
   
 
   return (
-    <AppBar position="static"  sx={{ backgroundColor: 'darkorchid', marginBottom: '20px'}}>
+    <AppBar position="static"  sx={{ backgroundColor: 'cornflowerblues', marginBottom: '20px'}}>
       <Toolbar>
         {isMobile ? (
           // 在手机端显示搜索框和菜单按钮lightseagreen

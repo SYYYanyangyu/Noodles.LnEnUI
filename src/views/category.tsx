@@ -16,7 +16,8 @@ interface mappedData {
   coverUrl: string
   title: string
   description: string
-  path: string
+  path: string,
+  id:string
 }
 
 const Category: React.FC = () => {
@@ -31,7 +32,8 @@ const Category: React.FC = () => {
           coverUrl: category.coverUrl,
           title: category.name.chinese,
           description: category.name.english,
-          path: category.path
+          path: category.path,
+          id:category.id
         }));
         setCategoryData(mappedData);
       } catch (error) {
@@ -50,7 +52,8 @@ const Category: React.FC = () => {
             photo={category.coverUrl}
             title={category.title}
             description={category.description}
-            to="/datalist"
+            to="/album"
+            categoryId={category.id}
           />
         </Grid>
       ))}

@@ -11,6 +11,7 @@ interface CardProps {
   title: string;
   description: string;
   to: string;
+  categoryId:string
 }
 
 const useStyles = makeStyles({
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomCard: React.FC<CardProps> = ({ photo, title, description, to }) => {
+const CustomCard: React.FC<CardProps> = ({ photo, title, description, to, categoryId}) => {
 
   const classes = useStyles();
   return (
@@ -36,7 +37,7 @@ const CustomCard: React.FC<CardProps> = ({ photo, title, description, to }) => {
         image={photo}
         title={title}
       />
-      <Link to={to} style={{ textDecoration: 'none' }}>
+      <Link to={`${to}?categoryId=${categoryId}`} style={{ textDecoration: 'none' }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
