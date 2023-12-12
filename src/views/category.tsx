@@ -23,7 +23,6 @@ const Category: React.FC = () => {
 
   const [categoryData, setCategoryData] = useState<mappedData[]>([]);
   
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,7 +50,7 @@ const Category: React.FC = () => {
             photo={category.coverUrl}
             title={category.title}
             description={category.description}
-            to="/listen"
+            to="/datalist"
           />
         </Grid>
       ))}
