@@ -25,7 +25,7 @@ const AppRouter = createHashRouter(
       <Route path="/communication" element={<Layout><Category /></Layout>}></Route>
       <Route path="/listen" element={<Layout><Category /></Layout>}></Route>
       <Route path="/album" element={<Layout><Ablum /></Layout>}></Route>
-      <Route path="/play" element={<Layout><Episode /></Layout>}></Route>
+      <Route path="/play" element={<Episode />}></Route>
     </>
   )
 );

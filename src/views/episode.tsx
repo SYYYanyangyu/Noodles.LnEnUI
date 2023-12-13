@@ -3,13 +3,14 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import type {AudioInfo}  from "aplayer-react";
-import Player from '../component/Play';
+import type { AudioInfo } from "aplayer-react";
+import PlayerCusomer from '../component/Play.tsx';
 import { useLocation } from 'react-router-dom';
 import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-
+import PlayerUI from 'react-material-music-player' // default export
+import { Track, PlayerInterface } from 'react-material-music-player'
 import { reqEpisodeInfo, reqEpisodeList } from '../api/listenadmin/episode';
 import type { EpisodeResponse, Sentence } from "../api/listenadmin/episode/type";
 
@@ -82,36 +83,13 @@ const Play: React.FC = () => {
     };
 
     return (
-        <Card sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                <CardContent sx={{ textAlign: 'center' }}>
-                    <Typography variant="h5">
-                        Live From Space
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                        {name}
-                    </Typography>
-                    <Box sx={{ width: '100%', maxWidth: '500px' }}>
-                        <Player key={audioUrl} audioList={audioList}/>
-                    </Box>
-                    <Button variant="outlined" onClick={toggleSubtitles} sx={{ mt: 2 }}>
-                        {showSubtitles ? 'Hide Subtitles' : 'Show Subtitles'}
-                    </Button>
-                    <Collapse in={showSubtitles}>
-                        <Paper sx={{ maxHeight: '500px', overflow: 'auto', mt: 2 }}>
-                            <Box sx={{ p: 2 }}>
-                                {episodeData?.sentences.map((sentence: Sentence, index) => (
-                                    <span key={index}>
-                                        {sentence.value}
-                                        <br />
-                                    </span>
-                                ))}
-                            </Box>
-                        </Paper>
-                    </Collapse>
-                </CardContent>
-            </Box>
-        </Card>
+
+        <div style={{ overflow: 'hidden', overflowY: 'hidden' }}>
+            <PlayerCusomer />
+        </div>
+
+
+
     )
 };
 

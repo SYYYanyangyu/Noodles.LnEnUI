@@ -27,6 +27,8 @@
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-h5-audio-player": "^3.9.0",
+    "react-material-music-player": "^1.2.1",
     "react-router-dom": "^6.20.1",
     "sass": "^1.69.5",
     "sort-by": "^1.2.0"
