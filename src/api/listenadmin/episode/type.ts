@@ -3,7 +3,7 @@ interface Name {
     english: string;
   }
   
-  interface Sentence {
+export  interface Sentence {
     startTime: number;
     endTime: number;
     value: string;

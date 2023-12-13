@@ -8,9 +8,14 @@ import type {
 
 enum API {
     EpisodeList_URL = '/Listening.Main/Episode/FindByAlbumId/',
+    Episode_URL = '/Listening.Main/Episode/FindById/',
 }
 
 
-// episode
+// episodeList
 export const reqEpisodeList = (albumId:string) => 
     request.get<any, EpisodeResponse[]>(`${API.EpisodeList_URL}${albumId}`)
+
+// episodeInfo
+export const reqEpisodeInfo = (episodeId:string) => 
+request.get<any, EpisodeResponse>(`${API.Episode_URL}${episodeId}`)

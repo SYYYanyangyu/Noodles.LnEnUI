@@ -9,8 +9,10 @@ import {
 // custom component
 import Layout from '../component/Layout';
 import MainPage from '../component/MainPage';
+import Play from '../component/Play';
 import Category from '../views/category';
 import Ablum from '../views/album';
+import Episode from '../views/episode';
 import ErrorPage from '../component/Error';
 
 const AppRouter = createHashRouter(
@@ -23,6 +25,7 @@ const AppRouter = createHashRouter(
       <Route path="/communication" element={<Layout><Category /></Layout>}></Route>
       <Route path="/listen" element={<Layout><Category /></Layout>}></Route>
       <Route path="/album" element={<Layout><Ablum /></Layout>}></Route>
+      <Route path="/play" element={<Layout><Episode /></Layout>}></Route>
     </>
   )
 );
