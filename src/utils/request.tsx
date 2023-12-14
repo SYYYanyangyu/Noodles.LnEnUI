@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Alert } from '@mui/material';
 
 const api = axios.create({
-    baseURL: "http://localhost:8089", //基础路径上会携带/api
+    baseURL: "http://localhost", //基础路径上会携带/api
     timeout: 15000, //超时的时间的设置
 });
 

@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 });
 
 
-function Sentence({ sentence }) {
+const Sentence = ({ sentence }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const toggleExpanded = () => {
@@ -51,9 +51,9 @@ function Sentence({ sentence }) {
 
   return (
     <>
-      <span>{displayText}</span>
+      <span style={{ fontSize: '16px', lineHeight: '1.5', color: 'black', textAlign: 'center' }}>{displayText}</span>
       {sentence.length > 5 && (
-        <IconButton onClick={toggleExpanded}>
+        <IconButton onClick={toggleExpanded} style={{ marginTop: '8px' }}>
           {expanded ? <ExpandLess /> : <ExpandMore />}
         </IconButton>
       )}
@@ -67,14 +67,10 @@ const PlayerApp: React.FC<{ traceList: Track[], detialEpisode: EpisodeResponse }
   const isDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [isSelected, setIsSelected] = useState(false);
   const [open, setOpen] = useState(false);
-  const [boxHeightScale , setHeightScale] = useState('vh');
+  const [boxHeightScale, setHeightScale] = useState('vh');
   const classes = useStyles();
 
   const currentIndexRef = React.useRef(0); // 使用 ref 来存储 currentIndex 的值
-
-  React.useEffect(() => {
-    currentIndexRef.current = 0; // 初始化 currentIndex 的值
-  }, []); // 只在组件挂载时执行一次
 
   PlayerInterface.subscribe((state: SubscribeState) => {
     if (state.mediaState === "PLAYING" && currentIndexRef.current !== state.currentTrack) {
@@ -92,11 +88,7 @@ const PlayerApp: React.FC<{ traceList: Track[], detialEpisode: EpisodeResponse }
     e.preventDefault();
     setIsSelected(!isSelected);
     setOpen(true);
-    if(boxHeightScale == '%'){
-      setHeightScale('vh')
-    }else{
-      setHeightScale('%')
-    }
+    setHeightScale(boxHeightScale === '%' ? 'vh' : '%');
   };
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string): void => {
@@ -105,33 +97,24 @@ const PlayerApp: React.FC<{ traceList: Track[], detialEpisode: EpisodeResponse }
     }
     setOpen(false);
   };
-
-  const [
-    {
-      width,
-      position,
-      bottom,
-      boxShadow,
-      borderRadiusTL,
-      borderRadiusTR,
-      borderRadiusBL,
-      borderRadiusBR,
-    }
-  ] = useState({
-    width: "90vw", // 调整宽度
-    position: "fixed",
-    bottom: 20, // 调整底部间距
-    boxShadow: 4, // 调整阴影大小
-    borderRadiusTL: 8, // 调整边框圆角
-    borderRadiusTR: 8,
-    borderRadiusBL: 0,
-    borderRadiusBR: 0,
-  });
+  const width = "90vw",// 调整宽度
+    position = "fixed",
+    bottom = 20, // 调整底部间距
+    boxShadow = 4, // 调整阴影大小
+    borderRadiusTL = 8, // 调整边框圆角
+    borderRadiusTR = 8,
+    borderRadiusBL = 0,
+    borderRadiusBR = 0;
 
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
+          '.MuiBox-root': {
+            /* Add your styles here */
+            position: 'auto',
+            /* Add more styles as needed */
+          },
           width: "100vw",
           height: `100${boxHeightScale}`,
           bgcolor: "background.paper",
@@ -141,64 +124,74 @@ const PlayerApp: React.FC<{ traceList: Track[], detialEpisode: EpisodeResponse }
           alignItems: "center",
           color: "text.primary",
           textAlign: "center",
+          position: isSelected ? 'fixed' : 'static', // Fix the screen when subtitles are displayed
+          zIndex: isSelected ? 1000 : 1, // Set a higher z-index when subtitles are displayed
         }}
       >
-
-
         {isSelected ? (
-          <Paper sx={{ maxHeight: '480px', overflow: 'auto', mt: 2 }}>
-            <Box sx={{ p: 2 }}>
-              {detialEpisode.sentences.map((sentence, index) => (
-                <Sentence key={index} sentence={sentence.value} />
-              ))}
-            </Box>
+          <Paper sx={{
+            width: '80%',
+            mt: 2,
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            border: '1px solid #ccc',
+            borderRadius: '8px',
+            overflowY: 'auto', // Enable scrolling
+            maxHeight:'60vh'
+          }}>
+            {detialEpisode.sentences.map((sentence, index) => (
+              <Sentence key={index} sentence={sentence.value} />
+            ))}
           </Paper>
         ) : (
           <>
             <img src={reactLogo} className="App-logo" alt="logo" />
-            <Box sx={{ typography: "h6" }}>Language is Infomation , and Infomation is Everything</Box>
+            <Box sx={{ typography: "h6" }}>Language is Information, and Information is Everything</Box>
           </>
         )}
-
-
-        <ToggleButtonGroup
-          value={mode}
-          exclusive={true}
-          onChange={(e, value) => {
-            if (value) setMode(value);
-          }}
-          sx={{ marginTop: '20px' }}
-        >
-          <ToggleButton value={"light"}>
-            <LightModeRounded />
-          </ToggleButton>
-          <ToggleButton value={"system"}>
-            <ComputerRounded />
-          </ToggleButton>
-          <ToggleButton value={"dark"}>
-            <DarkModeRounded />
-          </ToggleButton>
-          <ToggleButtonGroup value={isSelected ? "selected" : "unselected"}>
-            <ToggleButton
-              value={"plagiarism"}
-              onClick={handlePlagiarismClick}
-              className={isSelected ? classes.selected : classes.unselected}
-            >
-              {isSelected ? <CheckOutlinedIcon /> : <CloseOutlinedIcon />}
-            </ToggleButton>
-          </ToggleButtonGroup>
-          <Snackbar
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            open={open}
-            autoHideDuration={2000}
-            onClose={handleClose as any}
+        <div style={{ marginTop: '20px', zIndex: 2 }}>
+          <ToggleButtonGroup
+            value={mode}
+            exclusive={true}
+            onChange={(e, value) => {
+              if (value) setMode(value);
+            }}
           >
-            <MuiAlert onClose={handleClose} severity={isSelected ? 'success' : 'error'}>
-              {isSelected ? '显示字幕' : '关闭字幕'}
-            </MuiAlert>
-          </Snackbar>
-        </ToggleButtonGroup>
+            <ToggleButton value={"light"}>
+              <LightModeRounded />
+            </ToggleButton>
+            <ToggleButton value={"system"}>
+              <ComputerRounded />
+            </ToggleButton>
+            <ToggleButton value={"dark"}>
+              <DarkModeRounded />
+            </ToggleButton>
 
+            <ToggleButtonGroup value={isSelected ? "selected" : "unselected"}>
+              <ToggleButton
+                value={"plagiarism"}
+                onClick={handlePlagiarismClick}
+                className={isSelected ? classes.selected : classes.unselected}
+                sx={{ position: 'relative', zIndex: 2 }} // Set a higher z-index
+              >
+                {isSelected ? <CheckOutlinedIcon /> : <CloseOutlinedIcon />}
+              </ToggleButton>
+
+            </ToggleButtonGroup>
+            <Snackbar
+              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+              open={open}
+              autoHideDuration={2000}
+              onClose={handleClose as any}
+            >
+              <MuiAlert onClose={handleClose} severity={isSelected ? 'success' : 'error'}>
+                {isSelected ? '显示字幕' : '关闭字幕'}
+              </MuiAlert>
+            </Snackbar>
+          </ToggleButtonGroup>
+        </div>
         <Player
           sx={{
             width: width,
@@ -208,9 +201,9 @@ const PlayerApp: React.FC<{ traceList: Track[], detialEpisode: EpisodeResponse }
             borderRadius: `${borderRadiusTL}px ${borderRadiusTR}px ${borderRadiusBL}px ${borderRadiusBR}px`,
           }}
         />
-        
+
       </Box>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

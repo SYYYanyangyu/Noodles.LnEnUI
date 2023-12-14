@@ -3,6 +3,10 @@
   animation: App-logo-spin infinite 20s linear;
 }
 
+.MuiBox-root.css-5ev5f7 {
+  position: static; /* or any other position value */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
