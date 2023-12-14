@@ -9,37 +9,37 @@ import { useLocation } from 'react-router-dom';
 import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-import PlayerUI from 'react-material-music-player' // default export
 import { Track, PlayerInterface } from 'react-material-music-player'
 import { reqEpisodeInfo, reqEpisodeList } from '../api/listenadmin/episode';
 import type { EpisodeResponse, Sentence } from "../api/listenadmin/episode/type";
+import second from 'first'
 
 
-const exampleList = [
-    {
-        name: "Dancing with my phone",
-        artist: "HYBS",
-        url: "https://music.163.com/song/media/outer/url?id=1969744125",
-        cover: "https://mui.com/static/images/cards/live-from-space.jpg",
-    },
-    {
-        name: "Dancing with my phone",
-        artist: "HYBS",
-        url: "https://music.163.com/song/media/outer/url?id=1441997419",
-        cover: "https://mui.com/static/images/cards/live-from-space.jpg",
-    },
+const exampleList: Array<Track> = [
+    new Track(
+        "1",
+        "Dancing with my phone",
+        "HYBS",
+        "https://music.163.com/song/media/outer/url?id=1969744125",
+        "https://mui.com/static/images/cards/live-from-space.jpg",
+    ),
+
+    new Track(
+        "2",
+        "Dancing with my phone",
+        "HYBS",
+        "https://music.163.com/song/media/outer/url?id=1441997419",
+        "https://mui.com/static/images/cards/live-from-space.jpg"
+    )
 ];
 
 const Play: React.FC = () => {
     const [episodeData, setEpisodeData] = useState<EpisodeResponse | null>(null);  // 获取字幕
     const [episodeListData, setEpisodeListData] = useState<EpisodeResponse[] | null>(null); // 同一目录下的所有episode
-    const [showSubtitles, setShowSubtitles] = useState(false); // 控制显示字幕的状态
-    const [audioList, setAudioList] = useState<AudioInfo[]>(exampleList);  // Updated audioList
+    const [audioList, setAudioList] = useState<Track[]>(exampleList);  // Updated audioList
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const audioUrl = searchParams.get('audioUrl');
     const episodeId = searchParams.get('id') as string | 'default';
-    const name = searchParams.get('name');
 
     useEffect(() => {
         const fetchAlbumData = async () => {
@@ -56,16 +56,26 @@ const Play: React.FC = () => {
 
                 // 更新 audioList 的 Url
                 if (audioUrl) {
-                    const updatedAudioList: Array<AudioInfo> = episodeListResult.map((episode) => {
-                        return {
-                            name: episode.name.english,
-                            artist: "",
-                            url: episode.audioUrl,
-                            cover: "https://mui.com/static/images/cards/live-from-space.jpg",
-                        };
+                    var i = 1;
+                    
+                    const updatedAudioList: Array<Track> = episodeListResult.map((episode) => {
+                        var customerId = 0;
+                        if (audioUrl == episode.audioUrl) {
+                            customerId = 1;
+                        } else {
+                            customerId = ++i;
+                        }
+
+                        return new Track(
+                            `${customerId}`,
+                            "http://radio-upyun.test.upcdn.net/images/category/backiee-205922.jpg",
+                            episode.name.english,
+                            "noodles",
+                            episode.audioUrl
+                        );
                     });
 
-                    const targetIndex = updatedAudioList.findIndex(ss => ss.url == audioUrl); // 指定元素的索引
+                    const targetIndex = updatedAudioList.findIndex(ss => ss.source == audioUrl); // 指定元素的索引
                     const targetElement = updatedAudioList.splice(targetIndex, 1)[0]; // 移除指定元素并保存
                     updatedAudioList.unshift(targetElement); // 将指定元素放到数组的首位
                     setAudioList(updatedAudioList);
@@ -78,18 +88,8 @@ const Play: React.FC = () => {
         fetchAlbumData();
     }, [episodeId]);
 
-    const toggleSubtitles = () => {
-        setShowSubtitles(!showSubtitles);
-    };
-
     return (
-
-        <div style={{ overflow: 'hidden', overflowY: 'hidden' }}>
-            <PlayerCusomer />
-        </div>
-
-
-
+        <PlayerCusomer traceList={audioList} detialEpisode = {episodeData} />
     )
 };
 
