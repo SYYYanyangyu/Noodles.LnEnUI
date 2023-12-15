@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import type { AudioInfo } from "aplayer-react";
 import PlayerCusomer from '../component/Play.tsx';
 import { useLocation } from 'react-router-dom';
-import Collapse from '@mui/material/Collapse';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import { Track, PlayerInterface } from 'react-material-music-player'
 import { reqEpisodeInfo, reqEpisodeList } from '../api/listenadmin/episode';
 import type { EpisodeResponse, Sentence } from "../api/listenadmin/episode/type";
-import second from 'first'
 
 
 const exampleList: Array<Track> = [
@@ -89,7 +80,7 @@ const Play: React.FC = () => {
     }, [episodeId]);
 
     return (
-        <PlayerCusomer traceList={audioList} detialEpisode = {episodeData} />
+        <PlayerCusomer traceList={audioList} detialEpisode = {episodeData!} />
     )
 };
 

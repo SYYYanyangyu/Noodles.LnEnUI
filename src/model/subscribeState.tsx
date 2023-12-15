@@ -1,4 +1,4 @@
-import Player, { Track, PlayerInterface } from 'react-material-music-player'
+import  { Track } from 'react-material-music-player'
 
 export interface SubscribeState {
     mediaState: string,
