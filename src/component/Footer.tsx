@@ -31,8 +31,9 @@ const Footer: React.FC = () => {
         <footer style={footerStyle}>
             <div style={contentStyle}>
                 {/* 版权 & 个人信息 */}
-                <p>&copy; {new Date().getFullYear()} Powered by Go on Docker.</p>
+                <p>&copy; {new Date().getFullYear()} Powered by Noodles on Docker.</p>
                 <p>联系方式: Noodles.Syy@outlook.com</p>
+                <p>github : https://github.com/SYYYanyangyu/</p>
                 {/* 这里可以添加你想展示的其他信息 */}
             </div>
         </footer>

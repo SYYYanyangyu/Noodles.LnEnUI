@@ -89,7 +89,6 @@ const Sentence: React.FC<SentenceProps> = ({ sentence }) => {
                 <>
                   {sentence === 'translate' && <div>Translate: {sentence}</div>}
                   {sentence === 'syntax' && <div>Syntax analysis: {sentence}</div>}
-                  {/* Add more dialog content here */}
                 </>
               )}
             </DialogContent>
