@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -31,7 +31,7 @@ export default defineConfig(({ command, mode }) => {
           //需要代理跨域
           changeOrigin: true,
           //路径重写
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/Listening.Main/, ''),
         }
       }
     }

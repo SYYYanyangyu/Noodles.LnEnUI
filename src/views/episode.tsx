@@ -47,10 +47,10 @@ const Play: React.FC = () => {
 
                 // 更新 audioList 的 Url
                 if (audioUrl) {
-                    var i = 1;
+                    let i = 1;
                     
                     const updatedAudioList: Array<Track> = episodeListResult.map((episode) => {
-                        var customerId = 0;
+                        let customerId = 0;
                         if (audioUrl == episode.audioUrl) {
                             customerId = 1;
                         } else {
@@ -80,7 +80,7 @@ const Play: React.FC = () => {
     }, [episodeId]);
 
     return (
-        <PlayerCusomer traceList={audioList} detialEpisode = {episodeData!} />
+        <PlayerCusomer traceList={audioList} detailEpisode = {episodeData!} />
     )
 };
 

@@ -7,10 +7,10 @@ import type {
 
 
 enum API {
-    AlbumList_URL = '/Listening.Main/Album/FindByCategoryId/',
+    AlbumList_URL = '/Album/FindByCategoryId/',
 }
 
 
 // 目录
-export const reqAlbumList = (categoryId:string) =>
+export const reqAlbumList = (categoryId: string) =>
     request.get<any, AlbumResponse[]>(`${API.AlbumList_URL}${categoryId}`)
