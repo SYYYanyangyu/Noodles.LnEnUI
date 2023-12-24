@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Card } from 'antd';
-// import '../App.css' 
 import { APlayer } from "aplayer-react";
 import "aplayer-react/dist/index.css";
 import { makeStyles } from '@mui/styles';
