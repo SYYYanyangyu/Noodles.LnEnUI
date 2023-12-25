@@ -20,31 +20,31 @@ const HomePage: React.FC = () => {
       <Grid container spacing={6}>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/listen.png" title="听力练习" description="听力精炼" to="/listen" />
+          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/listen.png" title="听力练习" description="听力精炼" to="/listen" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/vocobulary.png" title="单词练习" description="单词精炼" to="/vocabulary" />
+          <CustomCard photo="http://radio-upyun.test.upcdn.net/images/index/vocobulary.png" title="单词练习" description="单词精炼" to="/vocabulary" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo={exam} title="考试练习" description="考试精炼" to="/exam" />
+          <CustomCard photo={exam} title="考试练习" description="考试精炼" to="/exam" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo={communication} title="一对一" description="一对一" to="/tutoring" />
+          <CustomCard photo={communication} title="一对一" description="一对一" to="/tutoring" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_c86a70575200f95c6d186c27d4dc0d57.jpg" title="一对一" description="一对一" to="/listen" />
+          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_c86a70575200f95c6d186c27d4dc0d57.jpg" title="一对一" description="一对一" to="/listen" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_46ea26a448702a50bc469e1431a3cced.jpg" title="一对一" description="一对一" to="/listen" />
+          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_46ea26a448702a50bc469e1431a3cced.jpg" title="一对一" description="一对一" to="/listen" categoryId=''/>
         </Grid>
 
         <Grid xs={6} md={2}>
-          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_a0002f9cb7041b4ee1e12c8981f29a91.jpg" title="小程序" description="小程序" to="/listen" />
+          <CustomCard photo="https://d2g4kcs2g0r8f3.cloudfront.net/lrg_a0002f9cb7041b4ee1e12c8981f29a91.jpg" title="小程序" description="小程序" to="/listen" categoryId=''/>
         </Grid>
       </Grid>
     </Box>
