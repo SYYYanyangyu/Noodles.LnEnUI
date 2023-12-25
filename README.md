@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# Noodles.LnEnUI
+A web about learning English.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technology Stack
 
-Currently, two official plugins are available:
+**Frontend:**
+  - React + TypeScript + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Backend:**
 
-## Expanding the ESLint configuration
+- C#/NET7
+- Identity + Jwt
+- Redis + SQL Server + EF Core + ElasticSearch
+- RabbitMQ + MediatR
+- 👉 [Source Code](https://github.com/SYYYanyangyu/Noodles.LnEn)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Function and Purpose
 
-- Configure the top-level `parserOptions` property like this:
+**Purpose:**
+  - zero.  A simple listening website.😊
+  - i.  Language is information, and information is everything.👋👋🏻👋🏿
+  - ii. Interest 🤣
+  - iii.Likes coding and sharing 😉
+  - iv. If you are taking a surprise exam for learning English, this may be very suitable for you.🤤
+  - v.  If you are also very interested in learning various languages, I would like to recommend this website to you.😋
+  - vi. As for the rest, I haven't thought of it yet. If you have any good listening materials or language learning methods, please call me😁 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Project Function:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+  - The UI is user-oriented, providing a simple and user-friendly web interface for users to dedicate more energy to learning English.
+  - **We will launch AI parsing syntax function in the future to make learning the language easier (not yet started)**
+  - **If you have any ideas about combining learning and AI, call me immediately 💥**
+
+**Contributors:**
+  - [Thank you to my college classmates @hataa](https://github.com/hata33)
+  - Welcome all contributors 🥳
