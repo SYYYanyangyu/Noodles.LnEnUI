@@ -28,8 +28,8 @@ A web about learning English.
 **Project Function:**
 
   - The UI is user-oriented, providing a simple and user-friendly web interface for users to dedicate more energy to learning English.
-  - <p style="color:blue;">**We will launch AI parsing syntax function in the future to make learning the language easier (not yet started)**</p>
-  - <p style="color:blue;">**If you have any ideas about combining learning and AI, call me immediately 💥**</p>
+  - <font color=#008000>**We will launch AI parsing syntax function in the future to make learning the language easier (not yet started)**</font>
+  - <font color=#008000>**If you have any ideas about combining learning and AI, call me immediately 💥**</font>
 
 **Contributors:**
   - [Thank you to my college classmates @hataa](https://github.com/hata33)
