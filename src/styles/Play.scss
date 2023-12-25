@@ -1,0 +1,10 @@
+.lyric_content {
+  height: 200px;
+  overflow: auto;
+}
+.lyric_content::-webkit-scrollbar {
+  display: none;
+}
+.lyric_item_height {
+  height: 30px;
+}

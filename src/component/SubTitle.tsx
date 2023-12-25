@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, MenuItem,ButtonGroup,Menu,IconButton} from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
@@ -38,7 +39,8 @@ const Sentence: React.FC<SentenceProps> = ({ sentence }) => {
     setMenuOpen(false); // 关闭菜单
   };
 
-  const displayText = expanded ? sentence : sentence.split(' ').slice(0, 5).join(' ') + '...';
+  // const displayText = expanded ? sentence : sentence.split(' ').slice(0, 5).join(' ') + '...';
+  const displayText = expanded ? sentence : sentence ;
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -51,7 +53,7 @@ const Sentence: React.FC<SentenceProps> = ({ sentence }) => {
           wordBreak: 'break-all', // 使用word-break属性实现强制换行
         }}
       >
-        {displayText}
+       {displayText}
       </span>
       {sentence.length > 5 && (
         <>

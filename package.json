@@ -19,6 +19,7 @@
     "@mui/material": "^5.15.0",
     "@mui/styles": "^5.14.20",
     "@mui/system": "^5.15.0",
+    "antd": "^5.12.5",
     "aplayer": "^1.10.1",
     "aplayer-react": "^1.6.0",
     "axios": "^1.6.2",
@@ -31,7 +32,9 @@
     "react-material-music-player": "^1.2.1",
     "react-router-dom": "^6.20.1",
     "sass": "^1.69.5",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "use-sync-external-store": "^1.2.0",
+    "vite-plugin-svgr": "^2.2.2"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",

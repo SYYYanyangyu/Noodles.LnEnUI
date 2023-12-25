@@ -7,7 +7,7 @@ import type {
 
 
 enum API {
-    CategoryList_URL = '/Listening.Main/Category/FindAll',
+    CategoryList_URL = '/Category/FindAll',
 }
 
 

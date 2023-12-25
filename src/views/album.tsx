@@ -66,6 +66,7 @@ const Album: React.FC = () => {
   }, [categoryId]);
 
   const handleClick = async (id: string) => {
+    console.log('click', id,open);
     if (open.includes(id)) {
       // close
       setOpen(open.filter((item) => item !== id));
@@ -84,7 +85,8 @@ const Album: React.FC = () => {
     }
   };
 
-  const handleEpisodeClick = (audioUrl: string, id: string,name:string) => {
+  const handleEpisodeClick = (audioUrl: string, id: string, name: string) => {
+    console.log('click', audioUrl, id, name);
     navigate(`/play?audioUrl=${audioUrl}&id=${id}&name=${name}`);
   };
 

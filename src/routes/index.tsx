@@ -12,7 +12,7 @@ import MainPage from '../component/MainPage';
 import Category from '../views/category';
 import Ablum from '../views/album';
 import Episode from '../views/episode';
-import ErrorPage from '../component/Error';
+// import ErrorPage from '../component/Error';
 
 const AppRouter = createHashRouter(
   createRoutesFromElements(
