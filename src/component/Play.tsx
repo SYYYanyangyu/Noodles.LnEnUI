@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import { Card } from 'antd';
-import { APlayer } from "aplayer-react";
+import { Card, Slider } from 'antd';
+import { APlayer } from "./Player";
 import "aplayer-react/dist/index.css";
 import { makeStyles } from '@mui/styles';
+import { ReactComponent as IconPlay } from "../assets/play.svg";
+import { ReactComponent as IconPause } from "../assets/pause.svg";
 
 // api and interface 
 import type { EpisodeResponse } from "../api/listenadmin/episode/type";
@@ -25,14 +27,15 @@ const useStyles = makeStyles({
     position: 'static'
   },
 });
-
+const mUrl = 'http://radio-upyun.test.upcdn.net/test/2023/12/18/4f8ca524691306871ad9eca1826adbe0636aa063957cddc9d540c3d3cd2c8b3a/%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98(%E4%B8%80).m4a';
 
 // const PlayerApp: React.FC<{ traceList: Track[], detailEpisode: EpisodeResponse }> = ({ traceList, detailEpisode }) => {
 const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> = ({ traceList, detailEpisode }) => {
-  console.log(traceList, detailEpisode, 11);
+
   const [currentTime, setCurrentTime] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isSliderChange, setIsSliderChange] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
   const [scroll, setScroll] = useState(0);
   const [lyric, setLyric] = useState<any>([]);
@@ -48,13 +51,13 @@ const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> 
     })
   }, [])
   useEffect(() => {
-    audioRef.current.src = 'http://radio-upyun.test.upcdn.net/test/2023/12/18/4f8ca524691306871ad9eca1826adbe0636aa063957cddc9d540c3d3cd2c8b3a/%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98(%E4%B8%80).m4a';
-    console.log(detailEpisode?.sentences)
+    audioRef.current.src = mUrl;
     let arr = detailEpisode?.sentences;
     setLyric(arr);
   }, [detailEpisode?.sentences])
   const handlePlay = () => {
-    audioRef.current.play().then((res: any) => {
+    setIsPlaying(!isPlaying);
+    isPlaying ? handleStop() : audioRef.current.play().then((res: any) => {
       console.log(res, 1234);
       // 返回成功 播放
       // setIsPlaying(true);
@@ -72,17 +75,23 @@ const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> 
   }
   // 由 currentTime 指定的时间更新。
   const timeUpData = (e: any) => {
-    console.log(e);
+    if (!isSliderChange) {
+      const progress = Math.ceil(e.target.currentTime);
+      setProgress(progress);
+    }
     const currentTimeUpData = e.target.currentTime;
     let curIndex = currentIndex != -1 ? currentIndex : 0;
     let startTime = lyric?.[curIndex]?.startTime;
     let endTime = lyric?.[curIndex]?.endTime;
-    console.log(startTime, 'startTime', endTime, curIndex, currentIndex, currentTimeUpData);
     // 当前时间大于开始时间并且小于结束时间
+    lyric.forEach((item: { startTime: number; endTime: number; }, idx: number) => {
+      if (currentTimeUpData > item.startTime && currentTimeUpData < item.endTime) {
+        handleScroll(idx);
+        setCurrentIndex(idx + 1);
+      }
+    })
     if (endTime > currentTimeUpData && currentTimeUpData > startTime && currentIndex != null) {
-
-      handleScroll();
-
+      handleScroll(curIndex);
       setCurrentIndex(curIndex + 1);
     }
   }
@@ -108,17 +117,28 @@ const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> 
     },
     () => undefined
   );
+  const sliderChange = (e: any) => {
+    audioRef.current.play();
+    setIsPlaying(true);
+    console.log(e, 'slider');
+    setProgress(e);
+    setIsSliderChange(true);
+    audioRef.current.currentTime = (detailEpisode?.durationInSecond / detailEpisode?.durationInSecond) * e;
+  }
+  const sliderChangeComplete = (e: any) => {
+    setIsSliderChange(false);
+  }
   // const timeUpdata = (e) => {
   //   const currentTimeUpdata = e.target.currentTime;
   //   if (!isChanging) {
-  //     setCurrentTime(currentTimeUpdata * 1000);
-  //     setProgress(currentTimeUpdata * 1000 / duration * 100);
+  //     setCurrentTime(currentTimeUpdata * detailEpisode?.durationInSecond);
+  //     setProgress(currentTimeUpdata * detailEpisode?.durationInSecond / duration * 100);
   //   }
   //   // 获取歌词
   //   let i = 0;
   //   for ( ; i < lyricList.length; i++){
   //     let lyricItem = lyricList[i];
-  //     if (currentTimeUpdata * 1000 < lyricItem.time) {
+  //     if (currentTimeUpdata * detailEpisode?.durationInSecond < lyricItem.time) {
   //       break;
   //     }
   //   }
@@ -144,16 +164,25 @@ const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> 
     };
   }, [currentIndex]);
 
-  const handleScroll = () => {
+  const handleScroll = (index: number) => {
     lyricContainerRef.current.scrollTo({
       top: scroll,
       behavior: "smooth",
     });
-    const s = scroll + 30;
+    const s = index * 30;
     setScroll(s);
   }
   return (
     <div>
+      {/* <APlayer audio={{
+        name: undefined,
+        artist: undefined,
+        url: mUrl,
+        cover: undefined,
+        lrc: undefined,
+        theme: undefined,
+        type: undefined
+      }} /> */}
       <Card style={{ padding: '50px 100px', display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
         <div>
           <div className="title">原文</div>
@@ -184,6 +213,31 @@ const PlayerApp: React.FC<{ traceList: any[], detailEpisode: EpisodeResponse }> 
           onEnded={e => handleMusicEnded()}
         />
       </Card>
+      <div className="play-control-bar">
+        <div className='play-pic-container' onClick={() => handlePlay()}>
+          <img src="http://radio-upyun.test.upcdn.net/images/category/backiee-205922.jpg" alt="" />
+          <div className="play-state-icon">
+            {isPlaying ? <IconPause /> : <IconPlay />}
+          </div>
+        </div>
+        <div className="play-progress">
+          <div className="play-title">标题</div>
+          <div className="progress">
+            <Slider defaultValue={30}
+              value={progress}
+              max={detailEpisode?.durationInSecond}
+              tooltip={{
+                open: false
+              }}
+              onChange={sliderChange}
+              onChangeComplete={sliderChangeComplete}
+            />
+          </div>
+        </div>
+        <div className="paly-control-btn">
+          按钮
+        </div>
+      </div>
 
     </div>
   );

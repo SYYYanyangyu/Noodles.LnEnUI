@@ -44,6 +44,12 @@ dependencies:
   axios:
     specifier: ^1.6.2
     version: 1.6.2
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
+  fast-average-color:
+    specifier: ^9.3.0
+    version: 9.4.0
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
