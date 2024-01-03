@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
+import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -21,6 +22,12 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
+    plugins: [
+      react(),
+      svgr({
+        exportAsDefault: false,
+      }),
+    ],
 
     // 代理跨域
     server: {

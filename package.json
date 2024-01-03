@@ -34,7 +34,9 @@
     "sass": "^1.69.5",
     "sort-by": "^1.2.0",
     "use-sync-external-store": "^1.2.0",
-    "vite-plugin-svgr": "^2.2.2"
+    "vite-plugin-svgr": "^2.2.2",
+    "clsx": "^1.2.1",
+    "fast-average-color": "^9.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",

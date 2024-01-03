@@ -8,3 +8,77 @@
 .lyric_item_height {
   height: 30px;
 }
+.play-control-bar {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: normal;
+  position: relative;
+  .play-pic-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    img {
+      height: 100%;
+    }
+    .play-state-icon {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.7;
+      filter: invert(100%);
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      transition: all 0.1s ease;
+      svg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+  .play-progress {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .play-title {
+      line-height: 40px;
+    }
+    .progress {
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+  }
+  .paly-control-btn {
+    width: 150px;
+    position: relative;
+    .time {
+      position: absolute;
+      width: 100%;
+      bottom: 17px;
+      padding: 5px;
+    }
+  }
+}
