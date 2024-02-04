@@ -7,7 +7,6 @@ import { Box } from '@mui/material';
 // custom component
 import CustomCard from '../component/CustomCard.tsx';
 
-
 // interface and ts type
 import { reqCategoryList } from '../api/listenadmin/category';
 import type { CategoryResponse } from "../api/listenadmin/category/type";
