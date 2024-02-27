@@ -28,9 +28,9 @@ A web about learning English.(http://124.221.228.31:8089/  http://124.221.228.31
 **Project Function:**
 
   - The UI is user-oriented, providing a simple and user-friendly web interface for users to dedicate more energy to learning English.
-  - <font color=#008000>**We will launch AI parsing syntax function in the future to make learning the language easier (not yet started)**</font>
+  - <font color=#008000>**We will launch AI parsing syntax function in the future to make learning the language easier**</font>
   - <font color=#008000>**If you have any ideas about combining learning and AI, call me immediately 💥**</font>
 
 **Contributors:**
-  - [Thank you to my college classmates @hataa](https://github.com/hata33)
+  - [Thank you all for your contributions.]
   - Welcome all contributors 🥳
