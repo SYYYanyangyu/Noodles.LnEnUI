@@ -1,5 +1,5 @@
 # Noodles.LnEnUI
-A web about learning English.
+A web about learning English.(http://124.221.228.31:8089/  http://124.221.228.31:8085/)
 
 ## Technology Stack
 
