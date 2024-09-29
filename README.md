@@ -8,7 +8,7 @@ A web about learning English.(http://124.221.228.31:8089/  http://124.221.228.31
 
 **Backend:**
 
-- C#/NET7
+- C#/NET8
 - Identity + Jwt
 - Redis + SQL Server + EF Core + ElasticSearch
 - RabbitMQ + MediatR
